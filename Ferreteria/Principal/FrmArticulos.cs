@@ -31,6 +31,7 @@ namespace Principal
 
                 ArticuloDatos datos = new ArticuloDatos();
                 listaArticulos = datos.listarArticulosSP();
+                listaArticulos = listaArticulos.OrderByDescending(a => a.FechaModif).ToList();
                 dgvArticulos.DataSource = listaArticulos;
                 dgvArticulos.Columns["Id"].Visible = false;
                 dgvArticulos.Columns["IdMarca"].Visible = false;
@@ -41,7 +42,8 @@ namespace Principal
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hubo un error. Intente de nuevo mas tarde.", ex.ToString());
+                throw;
+                //MessageBox.Show("Hubo un error. Intente de nuevo mas tarde.", ex.ToString());
             }
         }
 
@@ -49,6 +51,7 @@ namespace Principal
         {
             FrmFormulario frmFormulario = new FrmFormulario();
             frmFormulario.ShowDialog();
+            CargarGrilla();
         }
     }
 }

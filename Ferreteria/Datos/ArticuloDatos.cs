@@ -49,6 +49,7 @@ namespace Datos
             try
             {
                 datos.setearStoredProcedure("storedAgregarArticulo");
+                datos.setParametros("@Codigo", Nuevo.Codigo);
                 datos.setParametros("@Rubro", Nuevo.Rubro);
                 datos.setParametros("@Descripcion", Nuevo.Descripcion);
                 datos.setParametros("@Marca", Nuevo.Marca.Descripcion);
@@ -61,8 +62,8 @@ namespace Datos
             }
             catch (Exception ex)
             {
-
-                throw new Exception("Error en el método Agregar Artículo: " + ex.Message);
+                throw ex;
+                //throw new Exception("Error en el método Agregar Artículo: " + ex.Message);
             }
             finally
             {
