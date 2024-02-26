@@ -20,13 +20,29 @@ namespace Principal
         {
             InitializeComponent();
         }
+        public FrmFormulario(Articulo articulo)
+        {
+            InitializeComponent();
+            this.Articulo = articulo;
+        }
 
         private void FrmFormulario_Load(object sender, EventArgs e)
         {
             MarcaDatos datos = new MarcaDatos();
             listaMarcas = datos.listarMarcasSP();
+            cbxMarca.Items.Clear();
             cbxMarca.DataSource = listaMarcas;
             cbxMarca.SelectedIndex = -1;
+            if(Articulo != null)
+            {
+                txtCodigo.Text = Articulo.Codigo;
+                txtRubro.Text = Articulo.Rubro;
+                txtDescripcion.Text = Articulo.Descripcion;
+                cbxMarca.Text = Articulo.Marca.Descripcion;
+                string textoFormateado = String.Format("{0:0.################}", Articulo.Precio);
+                txtPrecio.Text = textoFormateado;
+                txtStock.Text = Articulo.Stock.ToString();
+            }
 
         }
 
@@ -58,6 +74,19 @@ namespace Principal
             {
                 //si articulo no es nulo, significa que se va a modificar un articulo
                 //Aca voy a hacer la logica para modificar un articulo
+                ArticuloDatos datos = new ArticuloDatos();
+                try
+                {
+                    CargarDatos();
+                    datos.ModificarArticuloSP(Articulo);
+                    MessageBox.Show("Artículo modificado exitosamente");
+                    this.Close();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             }
         }
 
@@ -70,9 +99,9 @@ namespace Principal
             Articulo.Marca = new Marca();
             if (cbxMarca.SelectedIndex >= 0)
             {
-                Articulo.Marca.Id = cbxMarca.SelectedIndex;
+                Articulo.Marca = (Marca)cbxMarca.SelectedItem;
                 Articulo.Marca.Descripcion = cbxMarca.Text;
-                Articulo.IdMarca = cbxMarca.SelectedIndex; ;
+                Articulo.IdMarca = cbxMarca.SelectedIndex; 
             }
             else
             {
