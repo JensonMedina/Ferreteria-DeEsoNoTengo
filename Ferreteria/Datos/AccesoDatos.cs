@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace Datos
 {
@@ -31,19 +32,19 @@ namespace Datos
             Comando.CommandType = System.Data.CommandType.StoredProcedure;
             Comando.CommandText = storedProcedure;
         }
-        public void EjecutarLectura()
-        {
-            Comando.Connection = Conexion;
-            try
-            {
-                Conexion.Open();
-                Lector = Comando.ExecuteReader();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //public void EjecutarLectura()
+        //{
+        //    Comando.Connection = Conexion;
+        //    try
+        //    {
+        //        Conexion.Open();
+        //        Lector = Comando.ExecuteReader();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
         public void EjecutarAccion()
         {
             Comando.Connection = Conexion;
@@ -57,6 +58,44 @@ namespace Datos
                 throw ex;
             }
         }
+
+        public void EjecutarLectura()
+        {
+            Comando.Connection = Conexion;
+            try
+            {
+                if (Conexion.State == ConnectionState.Closed)
+                {
+                    Conexion.Open();
+                }
+                Lector = Comando.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void EjecutarAccionActualizarPrecios(SqlCommand comando)
+        {
+            comando.Connection = Conexion;
+            try
+            {
+                if (Conexion.State == ConnectionState.Closed)
+                {
+                    Conexion.Open();
+                }
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+
         public int EjecutarAccionScalar()
         {
             Comando.Connection = Conexion;

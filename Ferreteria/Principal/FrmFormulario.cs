@@ -101,7 +101,7 @@ namespace Principal
             {
                 Articulo.Marca = (Marca)cbxMarca.SelectedItem;
                 Articulo.Marca.Descripcion = cbxMarca.Text;
-                Articulo.IdMarca = cbxMarca.SelectedIndex; 
+                Articulo.IdMarca = Articulo.Marca.Id; 
             }
             else
             {

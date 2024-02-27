@@ -40,7 +40,7 @@ namespace Principal
                 ArticuloDatos datos = new ArticuloDatos();
                 CultureInfo Culture = new CultureInfo("es-AR");
                 Culture.NumberFormat.CurrencySymbol = "ARS";
-                listaArticulos = datos.listarArticulosSP();
+                listaArticulos = datos.ListarArticulosSP();
                 listaArticulos = listaArticulos.OrderByDescending(a => a.FechaModif).ToList();
                 dgvArticulos.DataSource = listaArticulos;
                 dgvArticulos.Columns["Id"].Visible = false;
@@ -114,7 +114,8 @@ namespace Principal
         {
             if (string.IsNullOrEmpty(txtCodigo.Text) &&
                 string.IsNullOrEmpty(txtRubro.Text) &&
-                string.IsNullOrEmpty(cbxMarca.Text))
+                (string.IsNullOrEmpty(cbxMarca.Text) ||
+                cbxMarca.SelectedIndex < 0))
             {
                 MessageBox.Show("Debes completar al menos uno de los campos");
                 return true;
@@ -157,6 +158,13 @@ namespace Principal
             {
                 MessageBox.Show("Debe seleccionar un artículo", "Error de seleccion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void btnCambiarPrecio_Click(object sender, EventArgs e)
+        {
+            FrmCambiarPrecio frmCambiarPrecio = new FrmCambiarPrecio();
+            frmCambiarPrecio.ShowDialog();
+            CargarGrilla();
         }
     }
 }
