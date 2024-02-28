@@ -29,21 +29,27 @@ namespace Principal
         private void FrmFormulario_Load(object sender, EventArgs e)
         {
             MarcaDatos datos = new MarcaDatos();
-            listaMarcas = datos.listarMarcasSP();
-            cbxMarca.Items.Clear();
-            cbxMarca.DataSource = listaMarcas;
-            cbxMarca.SelectedIndex = -1;
-            if(Articulo != null)
+            try
             {
-                txtCodigo.Text = Articulo.Codigo;
-                txtRubro.Text = Articulo.Rubro;
-                txtDescripcion.Text = Articulo.Descripcion;
-                cbxMarca.Text = Articulo.Marca.Descripcion;
-                string textoFormateado = String.Format("{0:0.################}", Articulo.Precio);
-                txtPrecio.Text = textoFormateado;
-                txtStock.Text = Articulo.Stock.ToString();
+                listaMarcas = datos.listarMarcasSP();
+                cbxMarca.Items.Clear();
+                cbxMarca.DataSource = listaMarcas;
+                cbxMarca.SelectedIndex = -1;
+                if (Articulo != null)
+                {
+                    txtCodigo.Text = Articulo.Codigo;
+                    txtRubro.Text = Articulo.Rubro;
+                    txtDescripcion.Text = Articulo.Descripcion;
+                    cbxMarca.Text = Articulo.Marca.Descripcion;
+                    string textoFormateado = String.Format("{0:0.################}", Articulo.Precio);
+                    txtPrecio.Text = textoFormateado;
+                    txtStock.Text = Articulo.Stock.ToString();
+                }
             }
-
+            catch (Exception)
+            {
+                MessageBox.Show("Hubo un error. Intente de nuevo mas tarde.");
+            }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -65,8 +71,7 @@ namespace Principal
                 }
                 catch (Exception)
                 {
-
-                    throw;
+                    MessageBox.Show("Hubo un error. Intente de nuevo mas tarde.");
                 }
 
             }
@@ -84,8 +89,7 @@ namespace Principal
                 }
                 catch (Exception)
                 {
-
-                    throw;
+                    MessageBox.Show("Hubo un error. Intente de nuevo mas tarde.");
                 }
             }
         }

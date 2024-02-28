@@ -55,10 +55,9 @@ namespace Principal
                 cbxMarca.Text = "";
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw;
-                //MessageBox.Show("Hubo un error. Intente de nuevo mas tarde.", ex.ToString());
+                MessageBox.Show("Hubo un error. Intente de nuevo mas tarde.");
             }
         }
 
@@ -106,8 +105,7 @@ namespace Principal
             }
             catch (Exception)
             {
-
-                throw;
+                MessageBox.Show("Hubo un error. Intente de nuevo mas tarde.");
             }
         }
         private bool ValidarFiltro()
@@ -150,8 +148,7 @@ namespace Principal
                 }
                 catch (Exception)
                 {
-
-                    throw;
+                    MessageBox.Show("Hubo un error. Intente de nuevo mas tarde.");
                 }
             }
             else
@@ -165,6 +162,12 @@ namespace Principal
             FrmCambiarPrecio frmCambiarPrecio = new FrmCambiarPrecio();
             frmCambiarPrecio.ShowDialog();
             CargarGrilla();
+        }
+
+        private void btnMarcas_Click(object sender, EventArgs e)
+        {
+            FrmMarcas frmMarcas = new FrmMarcas();
+            frmMarcas.ShowDialog();
         }
     }
 }

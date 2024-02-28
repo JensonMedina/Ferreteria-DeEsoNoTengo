@@ -50,7 +50,8 @@ namespace Principal
 
         private bool Validar()
         {
-            if(string.IsNullOrEmpty(cbxMarca.Text)
+            if(string.IsNullOrEmpty(cbxMarca.Text) ||
+                cbxMarca.SelectedIndex < 0
                 || string.IsNullOrEmpty(txtPorcentaje.Text))
             {
                 MessageBox.Show("Debes completar todos los campos");
@@ -95,10 +96,9 @@ namespace Principal
                     MessageBox.Show("No se encontraron artículos para la marca seleccionada.");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw;
-                //MessageBox.Show("Error al cambiar los precios: " + ex.Message);
+                MessageBox.Show("Hubo un error. Intente de nuevo mas tarde.");
             }
         }
 

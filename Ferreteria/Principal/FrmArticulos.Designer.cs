@@ -34,6 +34,7 @@ namespace Principal
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnMarcas = new System.Windows.Forms.Button();
             this.btnCambiarPrecio = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
@@ -55,6 +56,7 @@ namespace Principal
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnMarcas);
             this.panel1.Controls.Add(this.btnCambiarPrecio);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnModificar);
@@ -64,6 +66,21 @@ namespace Principal
             this.panel1.Size = new System.Drawing.Size(1368, 95);
             this.panel1.TabIndex = 0;
             // 
+            // btnMarcas
+            // 
+            this.btnMarcas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarcas.FlatAppearance.BorderSize = 0;
+            this.btnMarcas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarcas.Font = new System.Drawing.Font("Segoe UI Historic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcas.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnMarcas.Location = new System.Drawing.Point(562, 21);
+            this.btnMarcas.Name = "btnMarcas";
+            this.btnMarcas.Size = new System.Drawing.Size(136, 50);
+            this.btnMarcas.TabIndex = 5;
+            this.btnMarcas.Text = "Marcas";
+            this.btnMarcas.UseVisualStyleBackColor = true;
+            this.btnMarcas.Click += new System.EventHandler(this.btnMarcas_Click);
+            // 
             // btnCambiarPrecio
             // 
             this.btnCambiarPrecio.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -71,7 +88,7 @@ namespace Principal
             this.btnCambiarPrecio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCambiarPrecio.Font = new System.Drawing.Font("Segoe UI Historic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCambiarPrecio.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnCambiarPrecio.Location = new System.Drawing.Point(728, 21);
+            this.btnCambiarPrecio.Location = new System.Drawing.Point(821, 21);
             this.btnCambiarPrecio.Name = "btnCambiarPrecio";
             this.btnCambiarPrecio.Size = new System.Drawing.Size(239, 50);
             this.btnCambiarPrecio.TabIndex = 4;
@@ -86,7 +103,7 @@ namespace Principal
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Segoe UI Historic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnEliminar.Location = new System.Drawing.Point(1184, 21);
+            this.btnEliminar.Location = new System.Drawing.Point(1183, 21);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(150, 50);
             this.btnEliminar.TabIndex = 2;
@@ -101,7 +118,7 @@ namespace Principal
             this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificar.Font = new System.Drawing.Font("Segoe UI Historic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnModificar.Location = new System.Drawing.Point(362, 21);
+            this.btnModificar.Location = new System.Drawing.Point(279, 21);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(160, 50);
             this.btnModificar.TabIndex = 1;
@@ -299,5 +316,6 @@ namespace Principal
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnReiniciar;
+        private System.Windows.Forms.Button btnMarcas;
     }
 }

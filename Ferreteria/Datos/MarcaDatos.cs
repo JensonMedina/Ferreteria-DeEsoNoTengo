@@ -29,10 +29,29 @@ namespace Datos
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                throw new Exception("Error en el metodo listar marcas: " + ex.Message);
             }
         }
+        public void AgregarMarcasSP(Marca Nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = "insert into tbmarcas values (@Descripcion)";
+                datos.setearConsulta(consulta);
+                datos.setParametros("@Descripcion", Nuevo.Descripcion);
 
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en el método Agregar Marca: " + ex.Message);
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+
+        }
     }
 }

@@ -104,8 +104,7 @@ namespace Datos
             }
             catch (Exception ex)
             {
-                throw ex;
-                //throw new Exception("Error en el método Agregar Artículo: " + ex.Message);
+                throw new Exception("Error en el método Agregar Artículo: " + ex.Message);
             }
             finally
             {
@@ -133,8 +132,7 @@ namespace Datos
             }
             catch (Exception ex)
             {
-                throw;
-                //throw new Exception("Error en el método Modificar artículo: " + ex.Message);
+                throw new Exception("Error en el método Modificar artículo: " + ex.Message);
             }
             finally
             {
@@ -195,10 +193,9 @@ namespace Datos
                 }
                 return listaArticulos;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw new Exception("Error en el metodo filtrar artículos: " + ex.Message);
             }
             finally
             {
@@ -217,7 +214,7 @@ namespace Datos
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("Error en el metodo eliminar artículo: " + ex.Message);
             }
             finally
             {
@@ -245,16 +242,12 @@ namespace Datos
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("Error en el metodo cambiar precio: " + ex.Message);
             }
             finally
             {
                 datos.CerrarConexion();
             }
         }
-
-
-
-
     }
 }
