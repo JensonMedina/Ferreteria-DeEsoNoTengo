@@ -26,12 +26,26 @@ namespace Principal
         private void FrmArticulos_Load(object sender, EventArgs e)
         {
             CargarGrilla();
-            MarcaDatos datos = new MarcaDatos();
-            listaMarcas = datos.listarMarcasSP();
-            cbxMarca.Items.Clear();
-            cbxMarca.DataSource = listaMarcas;
-            cbxMarca.SelectedIndex = -1;
+            CargarComboBox();
         }
+        private void CargarComboBox()
+        {
+            MarcaDatos datos = new MarcaDatos();
+            try
+            {
+                listaMarcas = datos.listarMarcasSP();
+                cbxMarca.DataSource = null;
+                cbxMarca.Items.Clear();
+                cbxMarca.DataSource = listaMarcas;
+                cbxMarca.SelectedIndex = -1;
+            }
+            catch (Exception)
+            {
+                throw;
+                //MessageBox.Show("Hubo un error. Intente de nuevo más tarde.");
+            }
+        }
+
         private void CargarGrilla()
         {
             try
@@ -168,6 +182,7 @@ namespace Principal
         {
             FrmMarcas frmMarcas = new FrmMarcas();
             frmMarcas.ShowDialog();
+            CargarComboBox();
         }
     }
 }
