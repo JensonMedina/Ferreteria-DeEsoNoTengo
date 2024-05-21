@@ -25,9 +25,19 @@ namespace Principal
 
         private void FrmArticulos_Load(object sender, EventArgs e)
         {
-            CargarGrilla();
-            CargarComboBox();
+            try
+            {
+                CargarGrilla();
+                CargarComboBox();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
+   
         private void CargarComboBox()
         {
             MarcaDatos datos = new MarcaDatos();
@@ -41,22 +51,26 @@ namespace Principal
             }
             catch (Exception)
             {
-                throw;
-                //MessageBox.Show("Hubo un error. Intente de nuevo más tarde.");
+                MessageBox.Show("Hubo un error. Intente de nuevo más tarde.");
             }
         }
 
         private void CargarGrilla()
         {
+            ArticuloDatos datos = new ArticuloDatos();
+
             try
             {
-
-                ArticuloDatos datos = new ArticuloDatos();
-                CultureInfo Culture = new CultureInfo("es-AR");
-                Culture.NumberFormat.CurrencySymbol = "ARS";
                 listaArticulos = datos.ListarArticulosSP();
                 listaArticulos = listaArticulos.OrderByDescending(a => a.FechaModif).ToList();
+
+
                 dgvArticulos.DataSource = listaArticulos;
+
+
+                // Configuración de las columnas de la grilla
+                CultureInfo Culture = new CultureInfo("es-AR");
+                Culture.NumberFormat.CurrencySymbol = "ARS";
                 dgvArticulos.Columns["Id"].Visible = false;
                 dgvArticulos.Columns["IdMarca"].Visible = false;
                 dgvArticulos.Columns["FechaModif"].HeaderText = "Última Modificación";
@@ -64,16 +78,19 @@ namespace Principal
                 dgvArticulos.Columns["Descripcion"].HeaderText = "Descripción";
                 dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "C2";
                 dgvArticulos.Columns["Precio"].DefaultCellStyle.FormatProvider = Culture;
-                txtCodigo.Text = "";
+
+                // Limpiar los filtros
+                txtDescripcion.Text = "";
                 txtRubro.Text = "";
                 cbxMarca.Text = "";
-
             }
             catch (Exception)
             {
+                //throw;
                 MessageBox.Show("Hubo un error. Intente de nuevo mas tarde.");
             }
         }
+
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -104,27 +121,30 @@ namespace Principal
                 MessageBox.Show("Debe seleccionar un artículo", "Error de seleccion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void BuscarArticulos()
         {
-            if (ValidarFiltro())
-                return;
             ArticuloDatos datos = new ArticuloDatos();
             try
             {
-                string codigo = string.IsNullOrEmpty(txtCodigo.Text) ? null : txtCodigo.Text;
+                string descripcion = string.IsNullOrEmpty(txtDescripcion.Text) ? null : txtDescripcion.Text;
                 string rubro = string.IsNullOrEmpty(txtRubro.Text) ? null : txtRubro.Text;
                 Marca idMarca = string.IsNullOrEmpty(cbxMarca.Text) ? null : (Marca)cbxMarca.SelectedItem;
-                dgvArticulos.DataSource =  datos.FiltrarArticulos(codigo, rubro, idMarca);
+                dgvArticulos.DataSource = datos.FiltrarArticulos(descripcion, rubro, idMarca);
             }
             catch (Exception)
             {
                 MessageBox.Show("Hubo un error. Intente de nuevo mas tarde.");
             }
         }
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (ValidarFiltro())
+                return;
+            BuscarArticulos();
+        }
         private bool ValidarFiltro()
         {
-            if (string.IsNullOrEmpty(txtCodigo.Text) &&
+            if (string.IsNullOrEmpty(txtDescripcion.Text) &&
                 string.IsNullOrEmpty(txtRubro.Text) &&
                 (string.IsNullOrEmpty(cbxMarca.Text) ||
                 cbxMarca.SelectedIndex < 0))
@@ -138,7 +158,7 @@ namespace Principal
         private void btnReiniciar_Click(object sender, EventArgs e)
         {
             CargarGrilla();
-            txtCodigo.Text = "";
+            txtDescripcion.Text = "";
             txtRubro.Text = "";
             cbxMarca.SelectedIndex = -1;
         }
@@ -184,5 +204,31 @@ namespace Principal
             frmMarcas.ShowDialog();
             CargarComboBox();
         }
+
+        private void txtRubro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (ValidarFiltro())
+                    return;
+                BuscarArticulos();
+            }
+        }
+
+        private void cbxMarca_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!cbxMarca.DroppedDown) // Verificar si el ComboBox no está desplegado (modo de edición)
+                {
+                    if (ValidarFiltro())
+                        return;
+                    BuscarArticulos();
+                    e.SuppressKeyPress = true; // Evitar que el ComboBox maneje la tecla Enter
+                }
+            }
+        }
+
+   
     }
 }

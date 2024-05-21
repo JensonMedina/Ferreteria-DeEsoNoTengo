@@ -20,7 +20,7 @@ namespace Datos
         public AccesoDatos()
         {
             //Conexion = new SqlConnection("server=.\\SQLEXPRESS; database=Ferreteria; integrated security=true");
-            string cadenaConexion = "Data Source=LAPTOP-E58L5U4B; Initial Catalog=Ferreteria; User ID=usuario; Password=1234";
+            string cadenaConexion = "Data Source=DESKTOP-O0QE263; Initial Catalog=Ferreteria; User ID=usuario; Password=1234";
             Conexion = new SqlConnection(cadenaConexion);
             Comando = new SqlCommand();
         }

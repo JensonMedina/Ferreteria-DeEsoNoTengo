@@ -45,7 +45,7 @@ namespace Datos
         //    }
         //}
 
-        public List<Articulo> ListarArticulosSP(int? idMarcaFiltro = null)
+        public List<Articulo> ListarArticulosSP( int? idMarca = null)
         {
             List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
@@ -71,7 +71,7 @@ namespace Datos
                     aux.IdMarca = datos.lector["IdMarca"] is DBNull ? 0 : (int)datos.lector["IdMarca"];
 
                     // Agregar el filtro por marca si se proporciona el parámetro idMarcaFiltro
-                    if (!idMarcaFiltro.HasValue || aux.IdMarca == idMarcaFiltro.Value)
+                    if (!idMarca.HasValue || aux.IdMarca == idMarca.Value)
                     {
                         lista.Add(aux);
                     }
@@ -141,35 +141,46 @@ namespace Datos
         }
 
 
-        public List<Articulo> FiltrarArticulos(string codigo, string rubro, Marca idMarca)
+        public List<Articulo> FiltrarArticulos(string descripcion, string rubro, Marca idMarca)
         {
             AccesoDatos datos = new AccesoDatos();
             List<Articulo> listaArticulos = new List<Articulo>();
             try
             {
-                string consulta = "select Codigo, Rubro, Descripcion, Marca, PrecioVenta, Stock, id, FechaModif, IdMarca from tbArticulos where ";
-                if(codigo != null && rubro == null && idMarca == null)
+                string consulta = "select * from tbArticulos where ";
+                if(descripcion != null && rubro == null && idMarca == null)
                 {
-                    consulta += "Codigo = '" + codigo + "'";
+                    //Para este caso el unico campo completado es el de descripcion
+                    consulta += "Descripcion like '%" + descripcion + "%'";
                 }
-                if(codigo != null && rubro != null && idMarca == null)
+                if(descripcion != null && rubro != null && idMarca == null)
                 {
-                    consulta += "Codigo = '" + codigo +"'" + " and Rubro = '" + rubro +"'";
+                    //en este caso tanto el campo de descripcion como el de rubro estan completado
+                    consulta += "Descripcion like '%" + descripcion +"%'" + " and Rubro like '%" + rubro +"%'";
                 }
-                if(codigo != null && rubro != null && idMarca != null)
+                if(descripcion != null && rubro == null && idMarca != null)
                 {
-                    consulta += "Codigo = '" + codigo +"'" + " and Rubro = '" + rubro + "'" + " and IdMarca = " + idMarca.Id;
+                    //en este caso el campo de descripcion y el de marca estan completados
+                    consulta += "Descripcion like '%" + descripcion + "%'" + " and IdMarca = " + idMarca.Id;
                 }
-                if(codigo == null && rubro != null && idMarca == null)
+                if(descripcion != null && rubro != null && idMarca != null)
                 {
-                    consulta += "Rubro = '" + rubro +"'";
+                    //Para este caso los 3 campos estan completados
+                    consulta += "Descripcion like '%" + descripcion + "%'" + " and Rubro like '%" + rubro + "%'" + " and IdMarca = " + idMarca.Id;
                 }
-                if(codigo == null && rubro != null && idMarca != null)
+                if(descripcion == null && rubro != null && idMarca == null)
                 {
-                    consulta += "Rubro = '" + rubro +"'" + " and IdMarca = " + idMarca.Id;
+                    //Para este caso el unico campo completado es el de rubro
+                    consulta += "Rubro like '%" + rubro +"%'";
                 }
-                if(codigo == null && rubro == null && idMarca != null)
+                if(descripcion == null && rubro != null && idMarca != null)
                 {
+                    //para este caso el campo de rubro y el de marca estan completados
+                    consulta += "Rubro like '%" + rubro +"%'" + " and IdMarca = " + idMarca.Id;
+                }
+                if(descripcion == null && rubro == null && idMarca != null)
+                {
+                    //en este caso el unico rubro completado es el marca
                     consulta += "IdMarca = " + idMarca.Id;
                 }
                 datos.setearConsulta(consulta);

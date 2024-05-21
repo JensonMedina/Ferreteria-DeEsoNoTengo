@@ -44,7 +44,6 @@ namespace Principal
             if (Validar())
                 return;
             CambiarPrecio();
-            MessageBox.Show("Se modifico el precio de todos los artículos de la marca: " + cbxMarca.Text);
             this.Close();
         }
 
@@ -88,6 +87,8 @@ namespace Principal
 
                         // Actualizar los precios en la base de datos
                         datos.ActualizarPreciosArticulos(articulos);
+                        MessageBox.Show("Se modifico el precio de todos los artículos de la marca: " + cbxMarca.Text);
+
 
                     }
                 }

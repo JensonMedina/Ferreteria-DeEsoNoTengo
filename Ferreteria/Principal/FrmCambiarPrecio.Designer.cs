@@ -32,17 +32,17 @@ namespace Principal
             this.cbxMarca = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtPorcentaje = new System.Windows.Forms.TextBox();
-            this.btnAceptar = new System.Windows.Forms.Button();
-            this.rbtnSubir = new System.Windows.Forms.RadioButton();
             this.rbtnBajar = new System.Windows.Forms.RadioButton();
+            this.rbtnSubir = new System.Windows.Forms.RadioButton();
+            this.btnAceptar = new System.Windows.Forms.Button();
+            this.txtPorcentaje = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbxMarca
             // 
-            this.cbxMarca.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbxMarca.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbxMarca.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbxMarca.DropDownHeight = 200;
             this.cbxMarca.Font = new System.Drawing.Font("Segoe UI Historic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -79,22 +79,28 @@ namespace Principal
             this.panel1.Size = new System.Drawing.Size(607, 415);
             this.panel1.TabIndex = 2;
             // 
-            // label2
+            // rbtnBajar
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(174, 204);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(248, 37);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Indicar porcentaje";
+            this.rbtnBajar.AutoSize = true;
+            this.rbtnBajar.Location = new System.Drawing.Point(323, 130);
+            this.rbtnBajar.Name = "rbtnBajar";
+            this.rbtnBajar.Size = new System.Drawing.Size(99, 41);
+            this.rbtnBajar.TabIndex = 2;
+            this.rbtnBajar.TabStop = true;
+            this.rbtnBajar.Text = "Bajar";
+            this.rbtnBajar.UseVisualStyleBackColor = true;
             // 
-            // txtPorcentaje
+            // rbtnSubir
             // 
-            this.txtPorcentaje.Location = new System.Drawing.Point(149, 244);
-            this.txtPorcentaje.Name = "txtPorcentaje";
-            this.txtPorcentaje.Size = new System.Drawing.Size(298, 43);
-            this.txtPorcentaje.TabIndex = 3;
-            this.txtPorcentaje.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPorcentaje_KeyPress);
+            this.rbtnSubir.AutoSize = true;
+            this.rbtnSubir.Checked = true;
+            this.rbtnSubir.Location = new System.Drawing.Point(199, 130);
+            this.rbtnSubir.Name = "rbtnSubir";
+            this.rbtnSubir.Size = new System.Drawing.Size(101, 41);
+            this.rbtnSubir.TabIndex = 1;
+            this.rbtnSubir.TabStop = true;
+            this.rbtnSubir.Text = "Subir";
+            this.rbtnSubir.UseVisualStyleBackColor = true;
             // 
             // btnAceptar
             // 
@@ -107,28 +113,22 @@ namespace Principal
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // rbtnSubir
+            // txtPorcentaje
             // 
-            this.rbtnSubir.AutoSize = true;
-            this.rbtnSubir.Checked = true;
-            this.rbtnSubir.Location = new System.Drawing.Point(199, 130);
-            this.rbtnSubir.Name = "rbtnSubir";
-            this.rbtnSubir.Size = new System.Drawing.Size(101, 41);
-            this.rbtnSubir.TabIndex = 5;
-            this.rbtnSubir.TabStop = true;
-            this.rbtnSubir.Text = "Subir";
-            this.rbtnSubir.UseVisualStyleBackColor = true;
+            this.txtPorcentaje.Location = new System.Drawing.Point(149, 244);
+            this.txtPorcentaje.Name = "txtPorcentaje";
+            this.txtPorcentaje.Size = new System.Drawing.Size(298, 43);
+            this.txtPorcentaje.TabIndex = 3;
+            this.txtPorcentaje.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPorcentaje_KeyPress);
             // 
-            // rbtnBajar
+            // label2
             // 
-            this.rbtnBajar.AutoSize = true;
-            this.rbtnBajar.Location = new System.Drawing.Point(323, 130);
-            this.rbtnBajar.Name = "rbtnBajar";
-            this.rbtnBajar.Size = new System.Drawing.Size(99, 41);
-            this.rbtnBajar.TabIndex = 6;
-            this.rbtnBajar.TabStop = true;
-            this.rbtnBajar.Text = "Bajar";
-            this.rbtnBajar.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(174, 204);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(248, 37);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Indicar porcentaje";
             // 
             // FrmCambiarPrecio
             // 

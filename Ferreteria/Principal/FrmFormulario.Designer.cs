@@ -53,7 +53,7 @@ namespace Principal
             this.txtRubro.Location = new System.Drawing.Point(199, 116);
             this.txtRubro.Name = "txtRubro";
             this.txtRubro.Size = new System.Drawing.Size(338, 43);
-            this.txtRubro.TabIndex = 0;
+            this.txtRubro.TabIndex = 1;
             // 
             // txtCodigo
             // 
@@ -62,7 +62,7 @@ namespace Principal
             this.txtCodigo.Location = new System.Drawing.Point(199, 37);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(338, 43);
-            this.txtCodigo.TabIndex = 2;
+            this.txtCodigo.TabIndex = 0;
             // 
             // txtDescripcion
             // 
@@ -71,7 +71,7 @@ namespace Principal
             this.txtDescripcion.Location = new System.Drawing.Point(199, 276);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(338, 43);
-            this.txtDescripcion.TabIndex = 4;
+            this.txtDescripcion.TabIndex = 3;
             // 
             // txtPrecio
             // 
@@ -79,7 +79,7 @@ namespace Principal
             this.txtPrecio.Location = new System.Drawing.Point(199, 355);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(338, 43);
-            this.txtPrecio.TabIndex = 5;
+            this.txtPrecio.TabIndex = 4;
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // txtStock
@@ -88,7 +88,7 @@ namespace Principal
             this.txtStock.Location = new System.Drawing.Point(199, 434);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(338, 43);
-            this.txtStock.TabIndex = 6;
+            this.txtStock.TabIndex = 5;
             this.txtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // label1
@@ -174,7 +174,7 @@ namespace Principal
             // 
             // cbxMarca
             // 
-            this.cbxMarca.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbxMarca.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbxMarca.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbxMarca.DropDownHeight = 200;
             this.cbxMarca.Font = new System.Drawing.Font("Segoe UI Historic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -183,7 +183,7 @@ namespace Principal
             this.cbxMarca.Location = new System.Drawing.Point(199, 195);
             this.cbxMarca.Name = "cbxMarca";
             this.cbxMarca.Size = new System.Drawing.Size(338, 45);
-            this.cbxMarca.TabIndex = 15;
+            this.cbxMarca.TabIndex = 2;
             // 
             // btnAceptar
             // 
@@ -193,7 +193,7 @@ namespace Principal
             this.btnAceptar.Location = new System.Drawing.Point(213, 525);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(145, 61);
-            this.btnAceptar.TabIndex = 14;
+            this.btnAceptar.TabIndex = 6;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);

@@ -41,7 +41,7 @@ namespace Principal
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.txtRubro = new System.Windows.Forms.TextBox();
             this.cbxMarca = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -76,7 +76,7 @@ namespace Principal
             this.btnMarcas.Location = new System.Drawing.Point(562, 21);
             this.btnMarcas.Name = "btnMarcas";
             this.btnMarcas.Size = new System.Drawing.Size(136, 50);
-            this.btnMarcas.TabIndex = 5;
+            this.btnMarcas.TabIndex = 7;
             this.btnMarcas.Text = "Marcas";
             this.btnMarcas.UseVisualStyleBackColor = true;
             this.btnMarcas.Click += new System.EventHandler(this.btnMarcas_Click);
@@ -91,7 +91,7 @@ namespace Principal
             this.btnCambiarPrecio.Location = new System.Drawing.Point(821, 21);
             this.btnCambiarPrecio.Name = "btnCambiarPrecio";
             this.btnCambiarPrecio.Size = new System.Drawing.Size(239, 50);
-            this.btnCambiarPrecio.TabIndex = 4;
+            this.btnCambiarPrecio.TabIndex = 8;
             this.btnCambiarPrecio.Text = "Cambiar precio";
             this.btnCambiarPrecio.UseVisualStyleBackColor = true;
             this.btnCambiarPrecio.Click += new System.EventHandler(this.btnCambiarPrecio_Click);
@@ -106,7 +106,7 @@ namespace Principal
             this.btnEliminar.Location = new System.Drawing.Point(1183, 21);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(150, 50);
-            this.btnEliminar.TabIndex = 2;
+            this.btnEliminar.TabIndex = 9;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -121,7 +121,7 @@ namespace Principal
             this.btnModificar.Location = new System.Drawing.Point(279, 21);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(160, 50);
-            this.btnModificar.TabIndex = 1;
+            this.btnModificar.TabIndex = 6;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -136,7 +136,7 @@ namespace Principal
             this.btnAgregar.Location = new System.Drawing.Point(20, 21);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(136, 50);
-            this.btnAgregar.TabIndex = 0;
+            this.btnAgregar.TabIndex = 5;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -197,17 +197,19 @@ namespace Principal
             this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(1330, 503);
-            this.dgvArticulos.TabIndex = 1;
+            this.dgvArticulos.TabIndex = 10;
+            this.dgvArticulos.VirtualMode = true;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
-            // txtCodigo
+            // txtDescripcion
             // 
-            this.txtCodigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCodigo.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(24, 133);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(325, 35);
-            this.txtCodigo.TabIndex = 2;
+            this.txtDescripcion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtDescripcion.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescripcion.Location = new System.Drawing.Point(24, 133);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(325, 35);
+            this.txtDescripcion.TabIndex = 0;
+            this.txtDescripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRubro_KeyPress);
             // 
             // txtRubro
             // 
@@ -216,11 +218,12 @@ namespace Principal
             this.txtRubro.Location = new System.Drawing.Point(405, 133);
             this.txtRubro.Name = "txtRubro";
             this.txtRubro.Size = new System.Drawing.Size(325, 35);
-            this.txtRubro.TabIndex = 3;
+            this.txtRubro.TabIndex = 1;
+            this.txtRubro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRubro_KeyPress);
             // 
             // cbxMarca
             // 
-            this.cbxMarca.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbxMarca.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbxMarca.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbxMarca.DropDownHeight = 200;
             this.cbxMarca.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -229,7 +232,8 @@ namespace Principal
             this.cbxMarca.Location = new System.Drawing.Point(786, 132);
             this.cbxMarca.Name = "cbxMarca";
             this.cbxMarca.Size = new System.Drawing.Size(325, 38);
-            this.cbxMarca.TabIndex = 4;
+            this.cbxMarca.TabIndex = 2;
+            this.cbxMarca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbxMarca_KeyDown);
             // 
             // label1
             // 
@@ -237,9 +241,9 @@ namespace Principal
             this.label1.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(19, 100);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 30);
+            this.label1.Size = new System.Drawing.Size(132, 30);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Código";
+            this.label1.Text = "Descripción";
             // 
             // label2
             // 
@@ -270,7 +274,7 @@ namespace Principal
             this.btnReiniciar.Location = new System.Drawing.Point(1300, 142);
             this.btnReiniciar.Name = "btnReiniciar";
             this.btnReiniciar.Size = new System.Drawing.Size(25, 25);
-            this.btnReiniciar.TabIndex = 8;
+            this.btnReiniciar.TabIndex = 4;
             this.btnReiniciar.UseVisualStyleBackColor = true;
             this.btnReiniciar.Click += new System.EventHandler(this.btnReiniciar_Click);
             // 
@@ -286,7 +290,7 @@ namespace Principal
             this.Controls.Add(this.cbxMarca);
             this.Controls.Add(this.txtRubro);
             this.Controls.Add(this.btnBuscar);
-            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.dgvArticulos);
             this.Controls.Add(this.panel1);
             this.Name = "FrmArticulos";
@@ -309,7 +313,7 @@ namespace Principal
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.DataGridView dgvArticulos;
-        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TextBox txtRubro;
         private System.Windows.Forms.ComboBox cbxMarca;
         private System.Windows.Forms.Label label1;
