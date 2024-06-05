@@ -67,7 +67,7 @@ namespace Principal
                 int idMarca = marca.Id;
 
                 // Obtener la lista de artículos de la misma marca
-                List<Articulo> articulos = datos.ListarArticulosSP(idMarca);
+                List<Articulo> articulos = datos.ListarArticulosPorIdMarca(idMarca);
 
                 if (articulos != null && articulos.Count > 0)
                 {
