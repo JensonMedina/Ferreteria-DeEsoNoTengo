@@ -3,9 +3,6 @@
 
 De eso no tengo es un sistema de gestión para una ferreteria que permite administrar los articulos de una manera más eficiente.
 
-## Arquitectura
-
-La aplicación fue desarrollada utilizando la metodología de tres capas, que incluye una capa de presentación, una capa de negocio y una capa de datos. Esta arquitectura proporciona una estructura modular y escalable que facilita la administración y el mantenimiento del código.
 
 ## Características
 
