@@ -1,7 +1,7 @@
 
 # Ferreteria - De eso no tengo.
 
-De eso no tengo es un sistema de gestión para una ferreteria que permite administrar los articulos de una manera más eficiente.
+De eso no tengo es un sistema de gestión para una ferreteria que permite administrar los articulos de una ferreteria de manera más eficiente.
 
 
 ## Características
